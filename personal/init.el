@@ -1,9 +1,11 @@
-;; paredit settings
-(prelude-require-package 'paredit)
-
 ;; turn on autocomplete globally
 (global-auto-complete-mode t)
 (setq ac-comphist-file "~/.emacs.d/personal/ac-comphist.dat")
+;; enable ac menu key map
+(setq ac-use-menu-map t)
+(define-key ac-menu-map (kbd "C-n") 'ac-next)
+(define-key ac-menu-map (kbd "C-p") 'ac-previous)
+
 
 ;; turn on eldoc mode for all lisps
 (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
@@ -13,7 +15,8 @@
 ;; use CtrlP style find-in-project
 (setq projectile-completion-system 'grizzl)
 
-;; turn on paredit mode for clojure
+;; paredit settings
+(prelude-require-package 'paredit)
 (require 'paredit)
 (autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
 (add-hook 'emacs-lisp-mode-hook       #'enable-paredit-mode)
